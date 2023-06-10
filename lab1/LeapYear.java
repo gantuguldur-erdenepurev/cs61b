@@ -4,13 +4,10 @@
 public class LeapYear {
     public static boolean isLeapYear(int year){
         /** Tests whether or not a given year is a Leap Year. */
-        if (year % 400 == 0) {
+        if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
             return true;
-        } else if (year % 4 == 0) and (year % 100 != 0){
-            return false;
-        } else {
-            return false;
-        }
+        } 
+        return false;
     }
 
     /** Calls isLeapYear to print correct statement.
