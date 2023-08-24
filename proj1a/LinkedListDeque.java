@@ -27,7 +27,7 @@ public class LinkedListDeque<T>{
                 size += 1;
         }
 
-        /* This addLast method operation is using looping, not constant time. So it needs to be fixed! */
+        /* The addLast method takes constant time now. */
         public void addLast(T item){
                 sentinel.prev = new StuffNode(sentinel.prev, item, null);
                 sentinel.prev.next = sentinel;
