@@ -30,7 +30,10 @@ public class ArrayDeque<T>{
 
     /** Inserts X into the front of the conceptual deque. */
     public void addFirst(T x){
-        if (size == items.length){
+        if (size == 0){
+            nextFirst = 4;
+            nextLast = 5;
+        }else if (size == items.length){
             nextFirst += items.length;
             resize(size * 2);
         }else if(nextFirst == -1){
@@ -43,7 +46,10 @@ public class ArrayDeque<T>{
 
     /** Inserts X into the back of the conceptual deque. */
     public void addLast(T x) {
-        if (size == items.length){
+        if (size == 0){
+            nextFirst = 4;
+            nextLast = 5;
+        }else if (size == items.length){
             nextFirst += items.length;
            resize(size * 2);
 
@@ -136,28 +142,27 @@ public class ArrayDeque<T>{
         /* Creates a list of one integer, namely 10 */
         ArrayDeque ArrayDeque = new ArrayDeque();
         ArrayDeque.addFirst(0);
-        ArrayDeque.addLast(1);
+        ArrayDeque.get(0);      /* ==> 0; */
+
         ArrayDeque.addLast(2);
-        ArrayDeque.removeLast();     /* ==> 2 */
-        ArrayDeque.addFirst(4);
-        ArrayDeque.addLast(5);
-        ArrayDeque.addLast(6);
-        ArrayDeque.removeFirst();    /* ==> 4 */
-        ArrayDeque.removeLast();      /* ==> 6 */
-        ArrayDeque.removeFirst();     /* ==> 0 */
-        ArrayDeque.addLast(10);
-        System.out.println(ArrayDeque.get(0));      /* ==> 1 */
-        ArrayDeque.removeFirst();     /* ==> 1 */
-        ArrayDeque.addLast(13);
-        ArrayDeque.addFirst(14);
-        ArrayDeque.addFirst(15);
-        System.out.println(ArrayDeque.get(2));      /* ==> 5 */
-        System.out.println(ArrayDeque.get(1));      /* ==> 14 */
-        System.out.println(ArrayDeque.get(3));      /* ==> 10 */
-        ArrayDeque.removeFirst();     /* ==> 15 */
-        ArrayDeque.removeFirst();     /* ==> 14 */
-        ArrayDeque.removeLast();      /* ==> 13 */
-        ArrayDeque.removeLast();
+        ArrayDeque.get(1);     /* ==> 2 */
+        ArrayDeque.removeLast();    /* ==> 2 */
+        ArrayDeque.removeLast();    /* ==> 0 */
+        ArrayDeque.addFirst(6);
+        ArrayDeque.addLast(7);
+        ArrayDeque.removeLast();    /* ==> 7 */
+        ArrayDeque.removeLast();    /* ==> 6 */
+        ArrayDeque.addFirst(10);
+        ArrayDeque.addFirst(11);
+        ArrayDeque.removeLast();    /* ==> 10 */
+        ArrayDeque.addFirst(13);
+        ArrayDeque.get(1);      /* ==> 11 */
+        ArrayDeque.removeLast();     /* ==> 11 */
+        ArrayDeque.addLast(16);
+        ArrayDeque.removeLast();     /* ==> 16 */
+        ArrayDeque.addFirst(18);
+        ArrayDeque.removeFirst();   /*  ==> 18 */
+        ArrayDeque.removeFirst();
 
     }
 }
