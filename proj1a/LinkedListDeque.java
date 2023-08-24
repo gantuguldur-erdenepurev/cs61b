@@ -109,7 +109,7 @@ public class LinkedListDeque<T>{
         }
 
 
-        public static void main(String[] args) {
+        private static void main(String[] args) {
                 /* Creates a list of integers */
                 LinkedListDeque<Integer> L = new LinkedListDeque<>();
                 System.out.println(L.isEmpty());

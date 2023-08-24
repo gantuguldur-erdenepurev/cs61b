@@ -126,7 +126,7 @@ public class ArrayDeque<T>{
     }
 
 
-    public static void main(String[] args) {
+    private static void main(String[] args) {
         /* Creates a list of one integer, namely 10 */
         ArrayDeque L = new ArrayDeque();
         System.out.println(L.isEmpty());
