@@ -132,7 +132,7 @@ public class ArrayDeque<T>{
     }
 
 
-    public static void main(String[] args) {
+    private static void main(String[] args) {
         /* Creates a list of one integer, namely 10 */
         ArrayDeque ArrayDeque = new ArrayDeque();
         ArrayDeque.addFirst(0);
