@@ -1,10 +1,13 @@
 
 public class ArrayDeque<T> {
-    /** Creates an empty list. */
+    /**
+     * Creates an empty list.
+     */
     private T[] items;
     private int nextFirst;
     private int nextLast;
     private int size;
+
     public ArrayDeque() {
         items = (T[]) new Object[8];
         nextFirst = 4;
@@ -13,7 +16,9 @@ public class ArrayDeque<T> {
         size = 0;
     }
 
-    /** Resizes the underlying array to the target capacity. */
+    /**
+     * Resizes the underlying array to the target capacity.
+     */
     private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
         System.arraycopy(items, 0, a, 0, nextLast);
@@ -24,13 +29,15 @@ public class ArrayDeque<T> {
     private void downsize(int capacity) {
         T[] a = (T[]) new Object[capacity];
         System.arraycopy(items, 0, a, 0, nextLast);
-        System.arraycopy(items, nextFirst + 1, a, (nextFirst + 1) - items.length/2, items.length - (nextFirst + 1));
+        System.arraycopy(items, nextFirst + 1, a, (nextFirst + 1) - items.length / 2, items.length - (nextFirst + 1));
         items = a;
     }
 
-    /** Inserts X into the front of the conceptual deque. */
+    /**
+     * Inserts X into the front of the conceptual deque.
+     */
     public void addFirst(T x) {
-        if (size == 0){
+        if (size == 0) {
             nextFirst = 4;
             nextLast = 5;
         } else if (size == items.length) {
@@ -44,14 +51,16 @@ public class ArrayDeque<T> {
         nextFirst -= 1;
     }
 
-    /** Inserts X into the back of the conceptual deque. */
+    /**
+     * Inserts X into the back of the conceptual deque.
+     */
     public void addLast(T x) {
-        if (size == 0){
+        if (size == 0) {
             nextFirst = 4;
             nextLast = 5;
         } else if (size == items.length) {
             nextFirst += items.length;
-           resize(size * 2);
+            resize(size * 2);
 
         } else if (nextLast == items.length) {
             nextLast = 0;
@@ -62,13 +71,15 @@ public class ArrayDeque<T> {
     }
 
     public boolean isEmpty() {
-        if (size == 0){
+        if (size == 0) {
             return true;
         }
         return false;
     }
 
-    /** Returns the number of items in the ArrayDeque. */
+    /**
+     * Returns the number of items in the ArrayDeque.
+     */
     public int size() {
         return size;
     }
@@ -87,8 +98,10 @@ public class ArrayDeque<T> {
         System.out.println();
     }
 
-    /** Deletes item from the front of the ArrayDeque list and
-     * returns deleted item. */
+    /**
+     * Deletes item from the front of the ArrayDeque list and
+     * returns deleted item.
+     */
     public T removeFirst() {
         if (nextFirst == items.length) {
             nextFirst = -1;
@@ -97,17 +110,19 @@ public class ArrayDeque<T> {
         items[nextFirst + 1] = null;
         nextFirst += 1;
         size -= 1;
-        double ratio = (double)size/items.length;
+        double ratio = (double) size / items.length;
         if (items.length >= 16 && ratio < 0.25) {
-            downsize(items.length/2);
+            downsize(items.length / 2);
             nextFirst -= items.length;
         }
         return x;
     }
 
 
-    /** Deletes item from back of the ArrayDeque list and
-     * returns deleted item. */
+    /**
+     * Deletes item from back of the ArrayDeque list and
+     * returns deleted item.
+     */
     public T removeLast() {
         if (nextLast == 0) {
             nextLast = items.length;
@@ -116,16 +131,18 @@ public class ArrayDeque<T> {
         items[nextLast - 1] = null;
         nextLast -= 1;
         size -= 1;
-        double ratio = (double)size/items.length;
+        double ratio = (double) size / items.length;
         if (items.length >= 16 && ratio < 0.25) {
-            downsize(items.length/2);
+            downsize(items.length / 2);
             nextFirst -= items.length;
         }
         return x;
     }
 
 
-    /** Gets the ith item in the list (0 is the front). */
+    /**
+     * Gets the ith item in the list (0 is the front).
+     */
     public T get(int index) {
         if (index >= this.size()) {
             return null;
@@ -138,7 +155,7 @@ public class ArrayDeque<T> {
     }
 
 
-    public static void main(String[] args) {
+    private static void main(String[] args) {
         /* Creates a list of one integer, namely 10 */
         ArrayDeque ArrayDeque = new ArrayDeque();
         ArrayDeque.addFirst(0);
