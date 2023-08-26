@@ -55,9 +55,11 @@ public class ArrayDeque<T> {
         if (size == 0) {
             nextFirst = 4;
             nextLast = 5;
-        } if (size == items.length) {
+        }
+        if (size == items.length) {
             resize(size * 2);
-        } if (nextFirst == -1) {
+        }
+        if (nextFirst == -1) {
             nextFirst = items.length - 1;
         }
         items[nextFirst] = x;
@@ -72,13 +74,14 @@ public class ArrayDeque<T> {
         if (size == 0) {
             nextFirst = 4;
             nextLast = 5;
-        } if (size == items.length) {
+        }
+        if (size == items.length) {
             resize(size * 2);
-
-        } if (nextLast == items.length) {
+        }
+        if (nextLast == items.length) {
             nextLast = 0;
-
-        } if (nextFirst == -1) {
+        }
+        if (nextFirst == -1) {
             nextFirst = items.length - 1;
         }
         items[nextLast] = x;
@@ -121,7 +124,8 @@ public class ArrayDeque<T> {
     public T removeFirst() {
         if (size == 0) {
             return null;
-        } if (nextFirst + 1 == items.length) {
+        }
+        if (nextFirst + 1 == items.length) {
             nextFirst = -1;
         }
         T x = items[nextFirst + 1];
@@ -143,7 +147,8 @@ public class ArrayDeque<T> {
     public T removeLast() {
         if (size == 0) {
             return null;
-        } if (nextLast == 0) {
+        }
+        if (nextLast == 0) {
             nextLast = items.length;
         }
         T x = items[nextLast - 1];
@@ -162,10 +167,10 @@ public class ArrayDeque<T> {
      * Gets the ith item in the list (0 is the front).
      */
     public T get(int index) {
-        if (index >= this.size()) {
+        if (index >= size) {
             return null;
         }
-        index += nextFirst;
+        index += (nextFirst + 1);
         if (index >= items.length) {
             index -= items.length;
         }
@@ -185,18 +190,10 @@ public class ArrayDeque<T> {
         L.addFirst(5);
         L.addFirst(6);
         L.addFirst(7);
-        L.printDeque();
         L.addFirst(8);
         L.addFirst(9);
-        L.printDeque();
-        System.out.println(L.get(8));
-        L.addFirst(1);
-        L.addFirst(2);
-        L.addLast(3);
-        L.addFirst(5);
-        L.addFirst(4);
-        L.addLast(6);
-        L.addLast(1);
+
+
 
     }
 }
