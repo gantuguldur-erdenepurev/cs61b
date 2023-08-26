@@ -26,14 +26,14 @@ public class ArrayDeque<T> {
     }
 
     private void downsize(int capacity) {
-        int N = nextFirst;
         T[] a = (T[]) new Object[capacity];
         if (nextLast > nextFirst) {
-            System.arraycopy(items, N + 1, a, 1, N - (N + 1));
+            System.arraycopy(items, nextFirst + 1, a, 1, nextLast - (nextFirst + 1));
             nextFirst = 0;
             nextLast = size + 1;
             items = a;
         } else {
+            int N = nextFirst;
             System.arraycopy(items, 0, a, 0, nextLast);
             System.arraycopy(items, N + 1, a, (N + 1) - items.length / 2, items.length - (N + 1));
             nextFirst -= items.length / 2;
@@ -179,18 +179,8 @@ public class ArrayDeque<T> {
         L.addFirst(4);
         L.addFirst(6);
         L.addFirst(1);
-        L.addFirst(5);
-        L.addFirst(1);
         System.out.println(L.removeFirst());
-        System.out.println(L.removeLast());
         System.out.println(L.removeFirst());
-        System.out.println(L.removeLast());
-        System.out.println(L.removeFirst());
-        System.out.println(L.removeLast());
-        System.out.println(L.removeFirst());
-        System.out.println(L.removeLast());
-        System.out.println(L.removeFirst());
-        System.out.println(L.removeLast());
         System.out.println(L.removeFirst());
         System.out.println(L.removeFirst());
         System.out.println(L.removeFirst());
