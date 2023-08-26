@@ -51,8 +51,7 @@ public class ArrayDeque<T> {
             nextLast = 5;
         } else if (size == items.length) {
             resize(size * 2);
-            nextFirst += items.length;
-        } else if (nextFirst == -1) {
+        } if (nextFirst == -1) {
             nextFirst = items.length - 1;
         }
         items[nextFirst] = x;
@@ -71,7 +70,7 @@ public class ArrayDeque<T> {
             nextFirst += items.length;
             resize(size * 2);
 
-        } else if (nextLast == items.length) {
+        } if (nextLast == items.length) {
             nextLast = 0;
         }
         items[nextLast] = x;
@@ -169,7 +168,7 @@ public class ArrayDeque<T> {
 
 
 
-    private static void main(String[] args) {
+    public static void main(String[] args) {
         /* Creates a list of one integer, namely 10 */
         ArrayDeque L = new ArrayDeque();
         L.addFirst(1);
@@ -182,6 +181,28 @@ public class ArrayDeque<T> {
         L.addFirst(6);
         L.printDeque();
         L.addFirst(1);
+        L.printDeque();
+        L.addFirst(1);
+        L.addFirst(2);
+        L.addLast(3);
+        L.addFirst(5);
+        L.addFirst(4);
+        L.addLast(6);
+        L.addLast(1);
+        L.addFirst(6);
+        L.printDeque();
+        L.addFirst(1);
+        L.addFirst(1);
+        L.addFirst(2);
+        L.addLast(3);
+        L.addFirst(5);
+        L.addFirst(4);
+        L.addLast(6);
+        L.addLast(1);
+        L.addFirst(6);
+        L.printDeque();
+        L.addFirst(1);
+
         System.out.println(L.removeFirst());
         System.out.println(L.removeLast());
         System.out.println(L.removeFirst());
