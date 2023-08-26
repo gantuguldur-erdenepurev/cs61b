@@ -1,4 +1,3 @@
-
 public class ArrayDeque<T> {
     /**
      * Creates an empty list.
@@ -28,9 +27,18 @@ public class ArrayDeque<T> {
 
     private void downsize(int capacity) {
         T[] a = (T[]) new Object[capacity];
-        System.arraycopy(items, 0, a, 0, nextLast);
-        System.arraycopy(items, nextFirst + 1, a, (nextFirst + 1) - items.length / 2, items.length - (nextFirst + 1));
-        items = a;
+        if (nextLast > nextFirst){
+            System.arraycopy(items, nextFirst + 1, a, 1 , nextLast - (nextFirst + 1));
+            nextFirst = 0;
+            nextLast = size + 1;
+            items = a;
+        }else{
+            System.arraycopy(items, 0, a, 0, nextLast);
+            System.arraycopy(items, nextFirst + 1, a, (nextFirst + 1) - items.length / 2, items.length - (nextFirst + 1));
+            nextFirst -= items.length / 2;
+            items = a;
+        }
+
     }
 
     /**
@@ -103,7 +111,10 @@ public class ArrayDeque<T> {
      * returns deleted item.
      */
     public T removeFirst() {
-        if (nextFirst == items.length) {
+        if (size == 0) {
+            return null;
+        }
+        if (nextFirst + 1 == items.length) {
             nextFirst = -1;
         }
         T x = items[nextFirst + 1];
@@ -113,7 +124,6 @@ public class ArrayDeque<T> {
         double ratio = (double) size / items.length;
         if (items.length >= 16 && ratio < 0.25) {
             downsize(items.length / 2);
-            nextFirst -= items.length;
         }
         return x;
     }
@@ -124,6 +134,9 @@ public class ArrayDeque<T> {
      * returns deleted item.
      */
     public T removeLast() {
+        if (size == 0) {
+            return null;
+        }
         if (nextLast == 0) {
             nextLast = items.length;
         }
@@ -134,7 +147,6 @@ public class ArrayDeque<T> {
         double ratio = (double) size / items.length;
         if (items.length >= 16 && ratio < 0.25) {
             downsize(items.length / 2);
-            nextFirst -= items.length;
         }
         return x;
     }
@@ -157,29 +169,289 @@ public class ArrayDeque<T> {
 
     private static void main(String[] args) {
         /* Creates a list of one integer, namely 10 */
-        ArrayDeque ArrayDeque = new ArrayDeque();
-        ArrayDeque.addFirst(0);
-        System.out.println(ArrayDeque.get(0));      /* ==> 0; */
+        ArrayDeque L = new ArrayDeque();
+        L.addFirst(1);
+        L.addFirst(2);
+        L.addFirst(3);
+        L.addFirst(5);
+        L.addFirst(4);
+        L.addFirst(6);
+        L.addFirst(1);
+        L.addFirst(1);
+        L.addFirst(2);
+        L.addFirst(3);
+        L.addFirst(5);
+        L.addFirst(4);
+        L.addFirst(6);
+        L.addFirst(1);
+        L.addFirst(1);
+        L.addFirst(2);
+        L.addFirst(3);
+        L.addFirst(5);
+        L.addFirst(4);
+        L.addFirst(6);
+        L.addFirst(1);
+        L.addFirst(1);
+        L.addFirst(2);
+        L.addFirst(3);
+        L.addFirst(5);
+        L.addFirst(4);
+        L.addFirst(6);
+        L.addFirst(1);
+        L.addFirst(1);
+        L.addFirst(2);
+        L.addFirst(3);
+        L.addFirst(5);
+        L.addFirst(4);
+        L.addFirst(6);
+        L.addFirst(1);
+        L.addFirst(1);
+        L.addFirst(2);
+        L.addFirst(3);
+        L.addFirst(5);
+        L.addFirst(4);
+        L.addFirst(6);
+        L.addFirst(1);
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        L.printDeque();
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeFirst());
+        L.addFirst(1);
+        L.addFirst(2);
+        L.addFirst(3);
+        L.addFirst(5);
+        L.addFirst(4);
+        L.addFirst(6);
+        L.addFirst(1);
+        L.addFirst(1);
+        L.addFirst(2);
+        L.addFirst(3);
+        L.addFirst(5);
+        L.addFirst(4);
+        L.addFirst(6);
+        L.addFirst(1);
+        L.addFirst(1);
+        L.addFirst(2);
+        L.addFirst(3);
+        L.addFirst(5);
+        L.addFirst(4);
+        L.addFirst(6);
+        L.addFirst(1);
+        L.addFirst(1);
+        L.addFirst(2);
+        L.addFirst(3);
+        L.addFirst(5);
+        L.addFirst(4);
+        L.addFirst(6);
+        L.addFirst(1);
+        L.addFirst(1);
+        L.addFirst(2);
+        L.addFirst(3);
+        L.addFirst(5);
+        L.addFirst(4);
+        L.addFirst(6);
+        L.addFirst(1);
+        L.addFirst(1);
+        L.addFirst(2);
+        L.addFirst(3);
+        L.addFirst(5);
+        L.addFirst(4);
+        L.addFirst(6);
+        L.addFirst(1);
 
-        ArrayDeque.addLast(2);
-        System.out.println(ArrayDeque.get(1));     /* ==> 2 */
-        ArrayDeque.removeLast();    /* ==> 2 */
-        ArrayDeque.removeLast();    /* ==> 0 */
-        ArrayDeque.addFirst(6);
-        ArrayDeque.addLast(7);
-        ArrayDeque.removeLast();    /* ==> 7 */
-        ArrayDeque.removeLast();    /* ==> 6 */
-        ArrayDeque.addFirst(10);
-        ArrayDeque.addFirst(11);
-        ArrayDeque.removeLast();    /* ==> 10 */
-        ArrayDeque.addFirst(13);
-        System.out.println(ArrayDeque.get(1));      /* ==> 11 */
-        ArrayDeque.removeLast();     /* ==> 11 */
-        ArrayDeque.addLast(16);
-        ArrayDeque.removeLast();     /* ==> 16 */
-        ArrayDeque.addFirst(18);
-        ArrayDeque.removeFirst();   /*  ==> 18 */
-        ArrayDeque.removeFirst();
+        L.addLast(2);
+        L.addLast(3);
+        L.addLast(5);
+        L.addLast(4);
+        L.addLast(6);
+        L.addLast(1);
+        L.addLast(2);
+        L.addLast(3);
+        L.addLast(5);
+        L.addLast(4);
+        L.addLast(6);
+        L.addLast(1);
+        L.addLast(2);
+        L.addLast(3);
+        L.addLast(5);
+        L.addLast(4);
+        L.addLast(6);
+        L.addLast(1);
+        L.addLast(2);
+        L.addLast(3);
+        L.addLast(5);
+        L.addLast(4);
+        L.addLast(6);
+        L.addLast(1);
+        L.addLast(2);
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeLast());
+
+        L.addFirst(5);
+        L.addLast(4);
+        L.addLast(6);
+        L.addFirst(1);
+        L.addLast(2);
+        L.addFirst(3);
+        L.addFirst(5);
+        L.addLast(4);
+        L.addLast(6);
+        L.addFirst(1);
+        L.addLast(2);
+        L.addFirst(3);
+        L.addFirst(5);
+        L.addLast(4);
+        L.addLast(6);
+
+
 
     }
 }
