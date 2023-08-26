@@ -20,6 +20,11 @@ public class ArrayDeque<T> {
      */
     private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
+        if (nextFirst == -1 && nextLast == 0) {
+            System.arraycopy(items, 0, a, 0, size);
+            items = a;
+            nextLast += size;
+        }
         if (nextFirst == -1) {
             System.arraycopy(items, 0, a, 0, nextLast);
             items = a;
@@ -182,18 +187,31 @@ public class ArrayDeque<T> {
     private static void main(String[] args) {
         /* Creates a list of one integer, namely 10 */
         ArrayDeque L = new ArrayDeque();
-        L.addFirst(0);
-        L.addFirst(1);
+        L.addLast(0);
+        L.addLast(1);
         L.addFirst(2);
         L.addFirst(3);
-        L.addFirst(4);
+        L.removeFirst();
         L.addFirst(5);
         L.addFirst(6);
-        L.addFirst(7);
-        L.addFirst(8);
-        L.addFirst(9);
-
-
+        L.printDeque();
+        System.out.println(L.get(2));
+        System.out.println(L.get(4));
+        L.addLast(9);
+        L.addFirst(10);
+        L.printDeque();
+        System.out.println(L.get(0));
+        System.out.println(L.get(2));
+        L.addLast(13);
+        L.printDeque();
+        System.out.println(L.get(2));
+        L.removeLast();
+        L.addFirst(16);
+        L.addLast(17);
+        L.removeLast();
+        L.addFirst(19);
+        L.removeLast();
+        
 
     }
 }
