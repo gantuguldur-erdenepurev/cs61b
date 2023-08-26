@@ -50,8 +50,8 @@ public class ArrayDeque<T> {
             nextFirst = 4;
             nextLast = 5;
         } else if (size == items.length) {
-            nextFirst += items.length;
             resize(size * 2);
+            nextFirst += items.length;
         } else if (nextFirst == -1) {
             nextFirst = items.length - 1;
         }
@@ -174,13 +174,24 @@ public class ArrayDeque<T> {
         ArrayDeque L = new ArrayDeque();
         L.addFirst(1);
         L.addFirst(2);
-        L.addFirst(3);
+        L.addLast(3);
         L.addFirst(5);
         L.addFirst(4);
+        L.addLast(6);
+        L.addLast(1);
         L.addFirst(6);
+        L.printDeque();
         L.addFirst(1);
         System.out.println(L.removeFirst());
+        System.out.println(L.removeLast());
         System.out.println(L.removeFirst());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeLast());
+        System.out.println(L.removeFirst());
+        System.out.println(L.removeLast());
         System.out.println(L.removeFirst());
         System.out.println(L.removeFirst());
         System.out.println(L.removeFirst());
