@@ -1,6 +1,4 @@
 import static org.junit.Assert.*;
-import java.util.Arrays;
-
 public class Palindrome {
     public Deque<Character> wordToDeque(String word) {
         LinkedListDeque<Character> L = new LinkedListDeque<>();
@@ -15,7 +13,7 @@ public class Palindrome {
     public boolean isPalindrome(String word) {
         String reversed = "";
         char letter;
-        for (int i = 0; i < word.length(); i++){
+        for (int i = 0; i < word.length(); i++) {
             letter = word.charAt(i);
             reversed = letter + reversed;
         }
@@ -37,7 +35,7 @@ public class Palindrome {
             if (L.size() == 1) {
                 return true;
             }
-            if (cc.equalChars((char) L.removeFirst(), (char) L.removeLast()) == false) {
+            if (!cc.equalChars((char) L.removeFirst(), (char) L.removeLast())) {
                 return false;
             }
         }
